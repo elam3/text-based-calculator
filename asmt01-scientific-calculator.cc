@@ -1,11 +1,53 @@
 #include <iostream>
 using namespace std;
 
+void displayMenu();
+void doAddition();
+void doSubtraction();
+void doMultiplication();
+void doDivision();
+
 int main() {
-    int op1, op2, opcode;
+    int opcode;
+    char again;
     
-    // Menu
-    cout << "Scientific Calculator" << endl;
+    do {
+        displayMenu();
+
+        cout << "\nWhat would you like to do? ";
+        cin >> opcode;
+
+        switch (opcode) {
+            case 1:
+                doAddition();
+                break;
+            case 2:
+                doSubtraction();
+                break;
+            case 3:
+                doMultiplication();
+                break;
+            case 4:
+                doDivision();
+                break;
+            default:
+                cout << "Unrecognized operator. Please choose an operation from the menu and enter its respective number." << endl;
+        }
+
+        cout << "\n\nWould you like to go again? (y/n) ";
+        cin >> again;
+    } while (again != 'n' && again != 'N');
+
+    return 0;
+}
+
+
+
+
+
+void displayMenu() {
+    // Display Menu
+    cout << "\n\n=== Scientific Calculator ===\n\n" << endl;
     cout << "1. Addition" << endl;
     cout << "2. Subtraction" << endl;
     cout << "3. Multiplication" << endl;
@@ -16,28 +58,51 @@ int main() {
     cout << "8. Floor" << endl;
     cout << "9. Ceiling" << endl;
     cout << "10. Factorial" << endl; */
+}
 
-    cout << "What would you like to do? (Please enter an integer): ";
-    cin >> opcode;
 
-    switch (opcode) {
-        case 1:
-            cout << "doAddition()" << endl;
-            break; 
-            break;
-        case 3:
-            cout << "doMultiplication()" << endl;
-            break;
-        case 4:
-            cout << "doDivision()" << endl;
-            break;
-        default:
-            cout << "Unrecognized operator. Please choose an operation from the menu and enter its respective number." << endl;
-    }
 
-    /*cout << "Please enter the first operand: ";
-    cin >> op1;
-    cout << "Please enter the second operand: ";
-    cin >> op2;*/
-    return 0;
+
+
+void doAddition() {
+    double op1, op2;
+    cout << "Please enter two numbers: ";
+    cin >> op1 >> op2;
+    cout << op1 << " + " << op2 << " = " << op1 + op2 << endl;
+}
+
+
+
+
+
+void doSubtraction() {
+    double op1, op2;
+    cout << "Please enter two numbers: ";
+    cin >> op1 >> op2;
+    cout << op1 << " - " << op2 << " = " << op1 - op2 << endl;
+}
+
+
+
+
+
+void doMultiplication() {
+    double op1, op2;
+    cout << "Please enter two numbers: ";
+    cin >> op1 >> op2;
+    cout << op1 << " * " << op2 << " = " << op1 * op2 << endl;
+}
+
+
+
+
+
+void doDivision() {
+    double op1, op2;
+    cout << "Please enter two numbers: ";
+    cin >> op1 >> op2;
+    if (op2 == 0)
+        cout << "Error: Division by zero." << endl;
+    else
+        cout << op1 << " / " << op2 << " = " << op1 / op2 << endl;
 }
