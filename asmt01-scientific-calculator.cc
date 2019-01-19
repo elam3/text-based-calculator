@@ -170,7 +170,10 @@ void doSquareRoot() {
 
 
 void doABS() {
-    ;
+    float op;
+    cout << "Please enter a value: ";
+    cin >> op;
+    cout << "The absolute value of " << op << " is: " << abs(op) << endl;
 }
 
 
