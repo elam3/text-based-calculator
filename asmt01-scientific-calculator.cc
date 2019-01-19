@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 void displayMenu();
@@ -6,6 +7,12 @@ void doAddition();
 void doSubtraction();
 void doMultiplication();
 void doDivision();
+void doPower();
+void doSquareRoot();
+void doABS();
+void doFloor();
+void doCeiling();
+void doFactorial();
 
 int main() {
     int opcode;
@@ -30,6 +37,9 @@ int main() {
             case 4:
                 doDivision();
                 break;
+            case 5:
+                doPower();
+                break;
             default:
                 cout << "Unrecognized operator. Please choose an operation from the menu and enter its respective number." << endl;
         }
@@ -52,8 +62,8 @@ void displayMenu() {
     cout << "2. Subtraction" << endl;
     cout << "3. Multiplication" << endl;
     cout << "4. Division" << endl;
-    /*cout << "5. Power" << endl;
-    cout << "6. Square Root" << endl;
+    cout << "5. Power" << endl;
+    /*cout << "6. Square Root" << endl;
     cout << "7. ABS" << endl;
     cout << "8. Floor" << endl;
     cout << "9. Ceiling" << endl;
@@ -105,4 +115,57 @@ void doDivision() {
         cout << "Error: Division by zero." << endl;
     else
         cout << op1 << " / " << op2 << " = " << op1 / op2 << endl;
+}
+
+
+
+
+
+void doPower() {
+    float val, exp;
+    cout << "Please enter a value: ";
+    cin >> val;
+    cout << "Please enter an exponent: ";
+    cin >> exp;
+    cout << val << "^" << exp << " = " << pow(val, exp) << endl;
+}
+
+
+
+
+
+void doSquareRoot() {
+    ;
+}
+
+
+
+
+
+void doABS() {
+    ;
+}
+
+
+
+
+
+void doFloor() {
+    ;
+}
+
+
+
+
+
+void doCeiling() {
+    ;
+}
+
+
+
+
+
+void doFactorial() {
+    ;
 }
