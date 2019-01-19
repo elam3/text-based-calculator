@@ -203,5 +203,21 @@ void doCeiling() {
 
 
 void doFactorial() {
-    ;
+    int op;
+    long res = 1;
+    cout << "Please enter a positive integer value: ";
+    cin >> op;
+    if (op < 0) {
+        cout << "Error: cannot compute factorial of negative numbers." << endl;
+    } else if (op == 1 || op == 0) {
+        res = 1;
+    } else {
+        //assert res > 1;
+        int tmp = op;
+        while (tmp > 1) {
+            res *= tmp;
+            tmp--;
+        }
+    }
+    cout << op << "! = " << res << endl;
 }
