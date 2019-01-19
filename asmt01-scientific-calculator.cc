@@ -192,7 +192,10 @@ void doFloor() {
 
 
 void doCeiling() {
-    ;
+    double op;
+    cout << "Please enter a value: ";
+    cin >> op;
+    cout << "The ceiling of " << op << " is: " << ceil(op) << endl;
 }
 
 
