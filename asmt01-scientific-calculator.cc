@@ -3,6 +3,7 @@
 using namespace std;
 
 void displayMenu();
+void chooseOperation(int);
 void doAddition();
 void doSubtraction();
 void doMultiplication();
@@ -24,6 +25,20 @@ int main() {
         cout << "\nWhat would you like to do? ";
         cin >> opcode;
 
+        chooseOperation(opcode);
+
+        cout << "\n\nWould you like to go again? (y/n) ";
+        cin >> again;
+    } while (again != 'n' && again != 'N');
+
+    return 0;
+}
+
+
+
+
+
+void chooseOperation(int opcode) {
         switch (opcode) {
             case 1:
                 doAddition();
@@ -40,15 +55,24 @@ int main() {
             case 5:
                 doPower();
                 break;
+            case 6:
+                doSquareRoot();
+                break;
+            case 7:
+                doABS();
+                break;
+            case 8:
+                doFloor();
+                break;
+            case 9:
+                doCeiling();
+                break;
+            case 10:
+                doFactorial();
+                break;
             default:
                 cout << "Unrecognized operator. Please choose an operation from the menu and enter its respective number." << endl;
         }
-
-        cout << "\n\nWould you like to go again? (y/n) ";
-        cin >> again;
-    } while (again != 'n' && again != 'N');
-
-    return 0;
 }
 
 
@@ -63,11 +87,11 @@ void displayMenu() {
     cout << "3. Multiplication" << endl;
     cout << "4. Division" << endl;
     cout << "5. Power" << endl;
-    /*cout << "6. Square Root" << endl;
+    cout << "6. Square Root" << endl;
     cout << "7. ABS" << endl;
     cout << "8. Floor" << endl;
     cout << "9. Ceiling" << endl;
-    cout << "10. Factorial" << endl; */
+    cout << "10. Factorial" << endl;
 }
 
 
@@ -135,7 +159,10 @@ void doPower() {
 
 
 void doSquareRoot() {
-    ;
+    float op;
+    cout << "Please enter a value: ";
+    cin >> op;
+    cout << "Square Root of " << op << ": " << sqrt(op) << endl;
 }
 
 
