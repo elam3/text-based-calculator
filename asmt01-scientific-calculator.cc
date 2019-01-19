@@ -146,7 +146,7 @@ void doDivision() {
 
 
 void doPower() {
-    float val, exp;
+    double val, exp;
     cout << "Please enter a value: ";
     cin >> val;
     cout << "Please enter an exponent: ";
@@ -159,7 +159,7 @@ void doPower() {
 
 
 void doSquareRoot() {
-    float op;
+    double op;
     cout << "Please enter a value: ";
     cin >> op;
     cout << "Square Root of " << op << ": " << sqrt(op) << endl;
@@ -170,7 +170,7 @@ void doSquareRoot() {
 
 
 void doABS() {
-    float op;
+    double op;
     cout << "Please enter a value: ";
     cin >> op;
     cout << "The absolute value of " << op << " is: " << abs(op) << endl;
@@ -181,7 +181,10 @@ void doABS() {
 
 
 void doFloor() {
-    ;
+    double op;
+    cout << "Please enter a value: ";
+    cin >> op;
+    cout << "The floor of " << op << " is: " << floor(op) << endl;
 }
 
 
