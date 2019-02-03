@@ -3,30 +3,40 @@
 #include <cstdlib>  // exit(int)
 using namespace std;
 
-void displayMenu();
-void chooseOperation(int);
-void doAddition();
-void doSubtraction();
-void doMultiplication();
-void doDivision();
-void doPower();
-void doSquareRoot();
-void doABS();
-void doFloor();
-void doCeiling();
-void doFactorial();
+
+
+
+
+void showMenu();
+void callOperation(const int, double&, double&, double&);
+void doAddition(double&, double&, double&);
+void doSubtraction(double&, double&, double&);
+void doMultiplication(double&, double&, double&);
+void doDivision(double&, double&, double&);
+void doPower(double&, double&, double&);
+void doSquareRoot(double&, double&);
+void doABS(double&, double&);
+void doFloor(double&, double&);
+void doCeiling(double&, double&);
+void doFactorial(double&);
+
+
+
+
 
 int main() {
-    int opcode;
     do {
+        int opcode; //operation code, i.e. which operation to do based on showMenu()
         do {
-            displayMenu();
+            showMenu();
             cout << "\nWhat would you like to do? ";
             cin >> opcode;
-            chooseOperation(opcode);
+            double op1, //operand 1
+                   op2, //operand 2
+                   res; //result of operation
+            callOperation(opcode, op1, op2, res);
         } while (opcode < 0 || opcode > 10);
     } while (true);
-
     return 0;
 }
 
@@ -34,40 +44,40 @@ int main() {
 
 
 
-//precondition: opcode is bound by the range [0,10], thanks to chooseOperation(int)
-void chooseOperation(int opcode) {
+//precondition: opcode is bound on range [0,10] by main's do-while()
+void callOperation(const int opcode, double& op1, double& op2, double& res) {
         switch (opcode) {
             case 0:
                 exit(0);
             case 1:
-                doAddition();
+                doAddition(op1, op2, res);
                 break;
             case 2:
-                doSubtraction();
+                doSubtraction(op1, op2, res);
                 break;
             case 3:
-                doMultiplication();
+                doMultiplication(op1, op2, res);
                 break;
             case 4:
-                doDivision();
+                doDivision(op1, op2, res);
                 break;
             case 5:
-                doPower();
+                doPower(op1, op2, res);
                 break;
             case 6:
-                doSquareRoot();
+                doSquareRoot(op1, res);
                 break;
             case 7:
-                doABS();
+                doABS(op1, res);
                 break;
             case 8:
-                doFloor();
+                doFloor(op1, res);
                 break;
             case 9:
-                doCeiling();
+                doCeiling(op1, res);
                 break;
             case 10:
-                doFactorial();
+                doFactorial(op1);
                 break;
             default:
                 ;
@@ -78,7 +88,7 @@ void chooseOperation(int opcode) {
 
 
 
-void displayMenu() {
+void showMenu() {
     cout << "\n\n=== Scientific Calculator ===\n\n" << endl;
     cout << "0. QUIT" << endl;
     cout << "1. Addition" << endl;
@@ -97,112 +107,112 @@ void displayMenu() {
 
 
 
-void doAddition() {
-    double op1, op2;
+void doAddition(double& op1, double& op2, double& res) {
     cout << "Please enter two numbers: ";
     cin >> op1 >> op2;
-    cout << op1 << " + " << op2 << " = " << op1 + op2 << endl;
+    res = op1 + op2;
+    cout << op1 << " + " << op2 << " = " << res << endl;
 }
 
 
 
 
 
-void doSubtraction() {
-    double op1, op2;
+void doSubtraction(double& op1, double& op2, double& res) {
     cout << "Please enter two numbers: ";
     cin >> op1 >> op2;
-    cout << op1 << " - " << op2 << " = " << op1 - op2 << endl;
+    res = op1 - op2;
+    cout << op1 << " - " << op2 << " = " << res << endl;
 }
 
 
 
 
 
-void doMultiplication() {
-    double op1, op2;
+void doMultiplication(double& op1, double& op2, double& res) {
     cout << "Please enter two numbers: ";
     cin >> op1 >> op2;
-    cout << op1 << " * " << op2 << " = " << op1 * op2 << endl;
+    res = op1 * op2;
+    cout << op1 << " * " << op2 << " = " << res << endl;
 }
 
 
 
 
 
-void doDivision() {
-    double op1, op2;
+void doDivision(double &op1, double &op2, double &res) {
     cout << "Please enter two numbers: ";
     cin >> op1 >> op2;
     if (op2 == 0)
         cout << "Error: Division by zero." << endl;
-    else
-        cout << op1 << " / " << op2 << " = " << op1 / op2 << endl;
+    else {
+        res = op1 / op2;
+        cout << op1 << " / " << op2 << " = " << res << endl;
+    }
 }
 
 
 
 
 
-void doPower() {
-    double val, exp;
+void doPower(double &val, double &exp, double &res) {
     cout << "Please enter a value: ";
     cin >> val;
     cout << "Please enter an exponent: ";
     cin >> exp;
-    cout << val << "^" << exp << " = " << pow(val, exp) << endl;
+    res = pow(val, exp);
+    cout << val << "^" << exp << " = " << res << endl;
 }
 
 
 
 
 
-void doSquareRoot() {
-    double op;
+void doSquareRoot(double &op, double &res) {
     cout << "Please enter a value: ";
     cin >> op;
-    cout << "Square Root of " << op << ": " << sqrt(op) << endl;
+    res = sqrt(op);
+    cout << "Square Root of " << op << ": " << res << endl;
 }
 
 
 
 
 
-void doABS() {
-    double op;
+void doABS(double &op, double &res) {
     cout << "Please enter a value: ";
     cin >> op;
-    cout << "The absolute value of " << op << " is: " << abs(op) << endl;
+    res = abs(op);
+    cout << "The absolute value of " << op << " is: " << res << endl;
 }
 
 
 
 
 
-void doFloor() {
-    double op;
+void doFloor(double &op, double &res) {
     cout << "Please enter a value: ";
     cin >> op;
-    cout << "The floor of " << op << " is: " << floor(op) << endl;
+    res = floor(op);
+    cout << "The floor of " << op << " is: " << res << endl;
 }
 
 
 
 
 
-void doCeiling() {
-    double op;
+void doCeiling(double &op, double &res) {
     cout << "Please enter a value: ";
     cin >> op;
-    cout << "The ceiling of " << op << " is: " << ceil(op) << endl;
+    res = ceil(op);
+    cout << "The ceiling of " << op << " is: " << res << endl;
 }
 
 
 
 
 
-void doFactorial() {
-    int op;
+void doFactorial(double &op) {
     long res = 1;
     cout << "Please enter a positive integer value: ";
     cin >> op;
@@ -214,8 +224,7 @@ void doFactorial() {
         //assert res > 1;
         int tmp = op;
         while (tmp > 1) {
-            res *= tmp;
-            tmp--;
+            res *= tmp--;
         }
     }
     cout << op << "! = " << res << endl;
