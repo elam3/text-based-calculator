@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <cstdlib>  // exit(int)
 using namespace std;
 
 void displayMenu();
@@ -17,19 +18,14 @@ void doFactorial();
 
 int main() {
     int opcode;
-    char again;
-    
     do {
-        displayMenu();
-
-        cout << "\nWhat would you like to do? ";
-        cin >> opcode;
-
-        chooseOperation(opcode);
-
-        cout << "\n\nWould you like to go again? (y/n) ";
-        cin >> again;
-    } while (again != 'n' && again != 'N');
+        do {
+            displayMenu();
+            cout << "\nWhat would you like to do? ";
+            cin >> opcode;
+            chooseOperation(opcode);
+        } while (opcode < 0 || opcode > 10);
+    } while (true);
 
     return 0;
 }
@@ -38,8 +34,11 @@ int main() {
 
 
 
+//precondition: opcode is bound by the range [0,10], thanks to chooseOperation(int)
 void chooseOperation(int opcode) {
         switch (opcode) {
+            case 0:
+                exit(0);
             case 1:
                 doAddition();
                 break;
@@ -71,7 +70,7 @@ void chooseOperation(int opcode) {
                 doFactorial();
                 break;
             default:
-                cout << "Unrecognized operator. Please choose an operation from the menu and enter its respective number." << endl;
+                ;
         }
 }
 
@@ -80,8 +79,8 @@ void chooseOperation(int opcode) {
 
 
 void displayMenu() {
-    // Display Menu
     cout << "\n\n=== Scientific Calculator ===\n\n" << endl;
+    cout << "0. QUIT" << endl;
     cout << "1. Addition" << endl;
     cout << "2. Subtraction" << endl;
     cout << "3. Multiplication" << endl;
